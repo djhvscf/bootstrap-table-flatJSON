@@ -18,11 +18,13 @@
         _initData.apply(this, Array.prototype.slice.apply(arguments));
 		var that = this;
 		
+		//If the flat is true
 		if(that.options.flat) {
 			that.options.data = sd.flatHelper(that.options.data);
 		}
     };
 	
+	//Main functions
 	var sd = {
 			flat: function(element) {
 				var result = {};

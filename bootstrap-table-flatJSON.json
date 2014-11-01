@@ -1,0 +1,28 @@
+{
+    "name": "bootstrap-table-flatJSON",
+    "version": "1.0.0",
+    "title": "bootstrap-table-flatJSON",
+    "description": "This plugin creates a Flat JSON. You can pass the object to convert to flat JSON object",
+    "author": {
+        "name": "Dennis Heránadez Vargas",
+        "email": "djhv92@hotmail.com",
+        "url": "http://djhvscf.github.io/Blog"
+    },
+    "licenses": [
+        {
+            "type": "MIT License",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.7"
+    },
+    "keywords": ["bootstrap-table-flatJSON.jquery"],
+    "homepage": "https://github.com/djhvscf/bootstrap-table-flatJSON",
+    "demo": "https://github.com/djhvscf/bootstrap-table-flatJSON",
+    "bugs": {
+        "url": "https://github.com/djhvscf/bootstrap-table-flatJSON/issues"
+    },
+    "docs": "https://github.com/djhvscf/bootstrap-table-flatJSON",
+    "download": "https://github.com/djhvscf/bootstrap-table-flatJSON/releases"
+}

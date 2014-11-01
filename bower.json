@@ -1,0 +1,29 @@
+{
+  "name": "bootstrap-table-flatJSON",
+  "version": "1.0.0",
+  "homepage": "https://github.com/djhvscf/bootstrap-table-flatJSON",
+  "authors": [
+    "djhvscf <djhv92@hotmail.com>"
+  ],
+  "description": "Plugin to flat the JSON object. Extension for Bootstrap-table",
+  "main": [
+      "src/bootstrap-table-flatJSON"
+  ],
+  "keywords": [
+    "JSON",
+    "convertion",
+    "jquery",
+	"plugin",
+	"bootstrap-table"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "docs",
+    "assets"
+  ]
+}

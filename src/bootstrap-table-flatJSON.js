@@ -1,4 +1,4 @@
-/ /**
+/**
  * bootstrap-table-flatJSON.js
  * @version: v1.0.0
  * @author: Dennis Hernández
@@ -32,7 +32,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
  
-(function ($) {
+;(function ($) {
     'use strict';
 
     $.extend($.fn.bootstrapTable.defaults, {

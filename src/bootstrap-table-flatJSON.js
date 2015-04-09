@@ -40,12 +40,10 @@
     });
 
     var BootstrapTable = $.fn.bootstrapTable.Constructor,
-        _initData = BootstrapTable.prototype.initData;
+        _initTable = BootstrapTable.prototype.initTable;
 
-    BootstrapTable.prototype.initData = function () {
+    BootstrapTable.prototype.initTable = function () {
 	
-        _initData.apply(this, Array.prototype.slice.apply(arguments));
-		
 		//If the flat is true
         if (this.options.flat) {
             this.options.data = sd.flatHelper(this.options.data);
@@ -54,6 +52,8 @@
         if (this.options.sidePagination === 'server') {
             this.data = this.options.data;
         }
+		
+		_initTable.apply(this, Array.prototype.slice.apply(arguments));
     };
 	
 	//Main functions

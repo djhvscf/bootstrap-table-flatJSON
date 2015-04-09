@@ -31,8 +31,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
- 
-;(function ($) {
+
+(function ($) {
     'use strict';
 
     $.extend($.fn.bootstrapTable.defaults, {
@@ -43,59 +43,60 @@
         _initTable = BootstrapTable.prototype.initTable;
 
     BootstrapTable.prototype.initTable = function () {
-	
-		//If the flat is true
+
+        //If the flat is true
         if (this.options.flat) {
             this.options.data = sd.flatHelper(this.options.data);
         }
-		
         if (this.options.sidePagination === 'server') {
             this.data = this.options.data;
         }
-		
-		_initTable.apply(this, Array.prototype.slice.apply(arguments));
+
+        _initTable.apply(this, Array.prototype.slice.apply(arguments));
     };
-	
-	//Main functions
-	var sd = {
-			flat: function(element) {
-				var result = {};
-				function recurse (cur, prop) {
-					if (Object(cur) !== cur) {
-						result[prop] = cur;
-					} else if ($.isArray(cur)) {
-						for(var i = 0, l = cur.length; i < l; i++) {
-							recurse(cur[i], prop ? prop+"."+i : ""+i);
-							if (l == 0) {
-								result[prop] = [];
-							}
-						}
-					} else {
-						var isEmpty = true;
-						for (var p in cur) {
-							isEmpty = false;
-							recurse(cur[p], prop ? prop+"."+p : p);
-						}
-						if (isEmpty) {
-							result[prop] = {};
-						}
-					}
-				}
-				recurse(element, "");
-				return result;
-			},
-			
-			flatHelper: function (data) {
-				var flatArray = [],
-                    arrayHelper = [];
-				if (!$.isArray(data)) {
-					arrayHelper.push(data);
-					data = arrayHelper;
-				}
-				$.each(data, function(i, element) {
-					flatArray.push(sd.flat(element));
-				});
-				return flatArray;
-			}
-		};
+
+    //Main functions
+    var sd = {
+        flat: function (element) {
+            var result = {};
+
+            function recurse(cur, prop) {
+                if (Object(cur) !== cur) {
+                    result[prop] = cur;
+                } else if ($.isArray(cur)) {
+                    for (var i = 0, l = cur.length; i < l; i++) {
+                        recurse(cur[i], prop ? prop + "." + i : "" + i);
+                        if (l == 0) {
+                            result[prop] = [];
+                        }
+                    }
+                } else {
+                    var isEmpty = true;
+                    for (var p in cur) {
+                        isEmpty = false;
+                        recurse(cur[p], prop ? prop + "." + p : p);
+                    }
+                    if (isEmpty) {
+                        result[prop] = {};
+                    }
+                }
+            }
+
+            recurse(element, "");
+            return result;
+        },
+
+        flatHelper: function (data) {
+            var flatArray = [],
+                arrayHelper = [];
+            if (!$.isArray(data)) {
+                arrayHelper.push(data);
+                data = arrayHelper;
+            }
+            $.each(data, function (i, element) {
+                flatArray.push(sd.flat(element));
+            });
+            return flatArray;
+        }
+    };
 })(jQuery);

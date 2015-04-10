@@ -24,11 +24,11 @@
     var BootstrapTable = $.fn.bootstrapTable.Constructor,
         _initData = BootstrapTable.prototype.initData,
         _init = BootstrapTable.prototype.init,
-        _load = BootstrapTable.prototype.load,
+        /*_load = BootstrapTable.prototype.load,*/
         _initTable = BootstrapTable.prototype.initTable;
 
-    BootstrapTable.prototype.initData = function () {
-        flatJSON(this, this.options.data);
+    BootstrapTable.prototype.initData = function (data) {
+        flatJSON(this, data ? this.options.data : data);
         _initData.apply(this, Array.prototype.slice.apply(arguments));
     };
 
@@ -42,7 +42,7 @@
         _initTable.apply(this, Array.prototype.slice.apply(arguments));
     };
 
-    BootstrapTable.prototype.load = function (data) {
+    /*BootstrapTable.prototype.load = function (data) {
         if (this.options.flat) {
             data = sd.flatHelper(data);
         }
@@ -50,7 +50,7 @@
             this.data = this.options.data;
         }
         _load.apply(this, Array.prototype.slice.apply(arguments));
-    };
+    };*/
 
     //Main functions
     var sd = {

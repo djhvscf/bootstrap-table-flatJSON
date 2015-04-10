@@ -43,7 +43,12 @@
     };
 
     BootstrapTable.prototype.load = function (data) {
-        flatJSON(this, data);
+        if (this.options.flat) {
+            data = sd.flatHelper(data);
+        }
+        if (this.options.sidePagination === 'server') {
+            this.data = this.options.data;
+        }
         _load.apply(this, Array.prototype.slice.apply(arguments));
     };
 

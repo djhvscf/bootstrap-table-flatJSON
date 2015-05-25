@@ -1,6 +1,6 @@
 {
     "name": "bootstrap-table-flatJSON",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "title": "bootstrap-table-flatJSON",
     "description": "This plugin creates a Flat JSON. You can pass the object to convert to flat JSON object",
     "author": {

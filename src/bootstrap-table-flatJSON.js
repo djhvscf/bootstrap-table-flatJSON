@@ -9,7 +9,8 @@
     'use strict';
 
     $.extend($.fn.bootstrapTable.defaults, {
-        flat: false
+        flat: false,
+        flatSeparator: '.'
     });
 
     var BootstrapTable = $.fn.bootstrapTable.Constructor,
@@ -18,14 +19,14 @@
     BootstrapTable.prototype.initData = function (data, type) {
         if( this.options.flat ){
             data = data === undefined ? this.options.data : data;
-            data = sd.flatHelper(data);
+            data = sd.flatHelper(data, this);
         }
         _initData.apply(this, [data, type]);
     };
 
     //Main functions
     var sd = {
-        flat: function (element) {
+        flat: function (element, that) {
             var result = {};
 
             function recurse(cur, prop) {
@@ -33,7 +34,7 @@
                     result[prop] = cur;
                 } else if ($.isArray(cur)) {
                     for (var i = 0, l = cur.length; i < l; i++) {
-                        recurse(cur[i], prop ? prop + "." + i : "" + i);
+                        recurse(cur[i], prop ? prop + that.options.flatSeparator + i : "" + i);
                         if (l == 0) {
                             result[prop] = [];
                         }
@@ -42,7 +43,7 @@
                     var isEmpty = true;
                     for (var p in cur) {
                         isEmpty = false;
-                        recurse(cur[p], prop ? prop + "." + p : p);
+                        recurse(cur[p], prop ? prop + that.options.flatSeparator + p : p);
                     }
                     if (isEmpty) {
                         result[prop] = {};
@@ -54,7 +55,7 @@
             return result;
         },
 
-        flatHelper: function (data) {
+        flatHelper: function (data, that) {
             var flatArray = [],
                 arrayHelper = [];
             if (!$.isArray(data)) {
